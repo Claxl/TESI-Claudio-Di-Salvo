@@ -1,0 +1,40 @@
+\chapter{Gate Array Full Reconfiguration}
+\label{chap:Cap3}
+Come già anticipato nel capitolo \ref{chap:Cap1}, lo scopo dell'architettura è quello di permettere la personalizzazione completa dell'FPGA al singolo utente, quindi ad esempio l'uso di un nuovo accelleratore, ma senza modificare il kernel linux.\\
+Al fine di far ciò è necessario riprogrammare la Programmable Logic tramite l'FPGA Manager.
+\section{FPGA Manager}
+Esso bisogna che sia abilitato nella struttura del kernel, poichè è un insieme di API agnostiche che la loro chiamata ci permette di programmare, o riprogrammare, l'FPGA tramite un file binario.
+\subsection{Creazione del file binario}
+Per la creazione del file binario, si necessita un bitstream la quale generazione è discussa nell'appendice \ref{ExportVivado}.\\
+Questa procedura necessita del tool bootgen, si rimanda a \ref{installazioneBoot} per l'installazione, il quale al fine di generare il file binario necessità uno file intermedio il Boot Image Format (BIF), questo file è cosi strutturato:
+\begin{lstlisting}[language=sh, label=lst:C, caption={template file .bif}]
+all:{./path/bitstream.bit}
+\end{lstlisting}
+Il file solitamente contiene tutte le fasi di boot ed eventuali partizioni dell'immagine.\\
+Al termine di ciò sarà necessario caricare l'environment di lavoro di bootgen, semplicemente spostandosi nella cartella d'installazione ed eseguendo il seguente:
+\begin{lstlisting}[language=sh, label=lst:C, caption={setup environment bootgen}]
+source  settings64.sh
+\end{lstlisting}
+In questo modo tramite il comando 
+\begin{lstlisting}[language=sh, label=lst:C, caption={setup environment bootgen}]
+bootgen -image [/path/to/bifFile] -arch zynq -process_bitstream bin
+\end{lstlisting}
+All' appendice \ref{autoBOOT} è disponibile uno script in grado di automatizzare questo processo.
+\section{Riprogrammzione Programmable Logic}
+Dopo la generazione del file binario, esso andrà copiato nella scheda SD in una qualsiasi partizione.\\
+Al fine di abilitare la riprogrammazione completa della scheda sarà sfruttata la classe FPGA Manager, essa per l'abilitazione necessità alcuni comandi da eseguire all'interno della scheda\cite{PL}:
+\begin{lstlisting}[language=sh, label=lst:C, caption={Abilitazione FPGA\_manager}]
+echo 0 > /sys/class/fpga_manager/fpga0/flags
+\end{lstlisting}
+Questo comando imposta le Flags dell'fpga manager per accettare un nuovo bistream, quindi di fatto abilitando la riprogrammazione.\\
+Di seguito bisognerà caricare il bitstream nella Programmable Logic
+\begin{lstlisting}[language=sh, label=lst:C, caption={Caricamento bitstream nella Programmable Logic}]
+mkdir -p /lib/firmware
+cp [NomeBIN.bin] /lib/firmware/
+\end{lstlisting}
+Infine per effettuare la completa riprogrammazione è necessario puntare il nuovo file binario caricato nella PL, per far ciò è necessario comunicarlo al FPGA\_Manager
+\begin{lstlisting}[language=sh, label=lst:C, caption={Comunicazione nuovo bitstream alla PL}]
+echo [NomeBIN.bin] > /sys/class/fpga_manager/fpga0/firmware
+\end{lstlisting}
+La verifica dell'avvenuta riprogrammazione è visibile tramite un led on-board o tramite l'esecuzione di un sorgente che sfrutta il driver GPIO precedentemente discusso al capitolo \ref{comunicazioneCap}.\\
+All'appendice \ref{Riprogrammazione} è possibile trovare uno script automatico per la riprogrammazione.

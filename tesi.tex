@@ -1,0 +1,184 @@
+%CLASSE DOCUMENTO - LINGUA E DIMENSIONE FONT
+\documentclass[corpo=11pt,numerazioneromana]{toptesi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[top=3cm,bottom=3cm,left=4cm,right=2.5cm,headsep=10pt,letterpaper]{geometry} % Page margins
+% INCLUSIONE PACCHETTI
+\usepackage[classica]{topfront}
+\usepackage[utf8]{inputenc} %utf8
+\usepackage[italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{blindtext}
+\usepackage{graphicx,wrapfig}
+\usepackage{booktabs}
+\usepackage{lmodern}
+\usepackage{varioref}
+\usepackage{url}
+\usepackage{array}
+\usepackage{paralist}{\obeyspaces\global\let =\space}
+\usepackage{verbatim}
+\usepackage{subfig}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{pdfpages}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{afterpage}
+\usepackage{listings}
+\usepackage[figuresright]{rotating}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amsmath}
+\usepackage[babel]{csquotes}
+\usepackage{hyperref}
+\usepackage[backend=biber,bibencoding=ascii]{biblatex}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+\makeatletter
+\newcommand\listofcodes{%
+ \iffrontmatter\else\frontmattertrue\fi
+ \if@openright\cleardoublepage\else\clearpage\fi
+ % change the meaning of \chapter in a group
+ \begingroup\def\chapter##1{\@schapter}
+ \phantomsection % for the hyperlink
+ \addcontentsline{toc}{chapter}{Elenco dei codici}
+ \lstlistoflistings
+ \endgroup
+} 
+\makeatother
+
+\addto\captionsitalian{%
+  \renewcommand{\lstlistlistingname}{Elenco dei codici}%
+  \renewcommand{\lstlistingname}{Codice}%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% CONFIGURAZIONE LINK E RIFERIMENTI
+\hypersetup{%
+    pdfpagemode={UseOutlines},
+    bookmarksopen,
+    pdfstartview={FitH},
+    colorlinks,
+    linkcolor={black}, %COLORE DEI RIFERIMENTI AL TESTO
+    citecolor={blue}, %COLORE DEI RIFERIMENTI ALLE CITAZIONI
+    urlcolor={blue} %COLORI DEGLI URL
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% CONFIGURAZIONE LISTATI/CODICE - CANCELLARE SE NON NECESSARIO
+% PYTHON - BIANCO E NERO
+\lstset{%
+	captionpos=b,
+	language=Python,
+	basicstyle =\small\ttfamily,
+	keywordstyle=\color{black}\bfseries,
+	breaklines=true,
+	breakatwhitespace=true,
+	frame=lines,
+	numbers=left,
+	numberstyle=\footnotesize,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% FRENCHSPACING VA _SEMPRE_ ABILITATO PER DOCUMENTI IN ITALIANO
+\frenchspacing
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hypersetup{
+    pdfauthor={Claudio Di Salvo},
+    pdfsubject={Tesi Triennale in Ingegneria elettronica ed informatica},
+    pdftitle={Implementazione di meccanismi per la Full e PartialReconfiguration di FPGA in architetture IoT-Cloud},
+    pdfkeywords={FPGA, Full reconfiguration, Partial Reconfiguration}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% LISTA DEI CAPITOLI DA INCLUDERE - PERSONALIZZARE
+\includeonly{%
+Introduzione,%
+Background,%
+Capitolo1,%
+Capitolo2,%
+Capitolo3,%
+Capitolo4,%
+Capitolo5,%
+Conclusioni,%
+app_a,%
+}
+
+% FILE DI BIBLIOGRAFIA
+\addbibresource{bibliography.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% INIZIO DOCUMENTO
+\begin{document}
+\afterpage{\blankpage}
+
+
+\includepdf{frontespizio.pdf}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%INTERLINEA - DEFAULT 1 - NON ESAGERATE, NON SUPERATE MAI 1.3 ;)
+\interlinea{1.5}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% INDICI - ELIMINARE GLI INDICI NON NECESSARI
+
+% INDICE GENERALE
+\tableofcontents
+
+% INDICE DELLE FIGURE
+\listoffigures
+
+\listofcodes
+
+\afterpage{\blankpage}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mainmatter
+
+% INCLUSIONE FILE CAPITOLI - PERSONALIZZARE - TENERE COERENTE CON LISTA IN ALTO
+\include{Introduzione}
+\include{Background}
+\include{Capitolo1}
+\include{Capitolo2}
+\include{Capitolo3}
+\include{Capitolo4}
+\include{Capitolo5}
+\include{Conclusioni}
+\appendix
+% INCLUSIONE APPENDICI - - PERSONALIZZARE - TENERE COERENTE CON LISTA IN ALTO
+\include{app_a}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% RINGRAZIAMENTI - PERSONALIZZARE
+\ringraziamenti
+% BIBLIOGRAFIA
+\phantomsection
+\addcontentsline{toc}{chapter}{\refname}
+\nocite{*}
+\printbibliography
+
+\end{document}
