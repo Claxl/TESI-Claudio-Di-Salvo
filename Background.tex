@@ -97,12 +97,33 @@ Una volta terminati questi passaggi avremo a disposizione l'implementazione del 
 Questo tipo di sviluppo è il migliore nel nostro caso poichè non stiamo effettuando un High Level Synthesis (HLS), in quel caso esistono dei tools appositi.
 \subsection{Sviluppo tramite Vivado}
 Lo sviluppo tramite vivado è al quanto semplificato, poichè godendo di un interfaccia grafica permette l'implementazione di sistemi complessi anche non avendo alcuna conoscenza di VHDL o Verilog, si rimanda però all'appendice \ref{app:a} per maggiori chiarimenti su installazione ed inizio del primo progetto.
-\section{Vitis}
+\section{Tecnologie implementative}
+\subsection{Vitis}
 Vitis è il Software Development Kit (SDK) fornito da Xilnix nella sua suite di prodotti, la sua installazione è contestuale a quella trattata in \ref{app:a}, tramite esso è possibile generare codice che in grado di esser eseguito sulla scheda, questo è possibile tramite le informazioni prese su vivado.\\
 Sono presenti due possibilità di programmazione, standalone e linux, la prima applicazione permetterà l'esecuzione di codice C in modalità Bare-Metal\footnote{Livello di programmazione senza astrazioni, come il sistema operativo}, in questo modo potremmo usare delle librerie della Xilinix che contengono delle funzioni standard al fine di effettuare la comunicazione tra PS e PL. Successivamente tratteremo anche la comunicazione tra PS e PL su sistema linux. Questo tipo di programmazione è discussa approfonditamente \ref{Standalone}
-\section{Petalinux}
+\subsection{Petalinux}
 È un tool della Xilinix che necessario qualora si volesse usare una distro Linux embedded su di una FPGA SoC xilinix, la sua installazione è trattata in \ref{petalinuxinst}. Petalinux offre una grossa flessibilità per la costruzione e compilazione di un kernel Linux, la sua flessibilità ci permette di escludere o includere moduli pre-esistenti oppure crearne uno noi secondo le nostre esigenze. Si basa fortemente sull'architettura e sull'esportazione che avviene da vivado al fine di costruire il device tree e tutti gli strumenti necessari al kernel.\\
 Al fine di usufruire di petalinux vanno impostati i Jumpers della scheda MIO2-6 in configurazione  "00110", in questo modo potremmo usare il kernel che abbiamo creato e compilato\footnote{Che vedremo successivamente}, tramite la scheda SD che dovrà rispettare delle specifiche espresse in \ref{sd}.
-\section{Bootgen}
-Bootgen è un tool appartenente alla suite di sviluppo della Xilinix, il suo scopo è quello di generare i file binari e tutti gli artefatti necessari. La sua installazione verrà discussa in \ref{installazioneBoot}
-Sfortunatamente questo tool è attualemente disponibile solo per architettura x86, quindi come tutti i tool presentati precedentemente non sarà possibile installarli sulla piattaforma da noi prescelta.\\
+\subsection{Bootgen}
+\textit{Bootgen} è un tool appartenente alla suite di sviluppo della Xilinix, il suo scopo è quello di generare i file binari e tutti gli artefatti necessari. La sua installazione verrà discussa in \ref{installazioneBoot}
+Sfortunatamente questo tool è attualemente disponibile solo per architettura x86, quindi come tutti i tool presentati precedentemente non sarà possibile installarli sulla piattaforma da noi prescelta.\clearpage
+\subsection{OpenStack}
+OpenStack è un piattaforma cloud open-source\cite{OpenStack2} che permette la gestione di risorse in cloud, queste risorse possono variare da macchine virtuali, blocchi d'indirizzamento, spazio d'archiviazione ed acceleratori. Tutte le risorse fisiche vengono aggregate in un unico grande pool ed alloca le risorse virtuali permettendo cosi la richiesta tramite le API da parte dell'utente finale, OpenStack non gestisce la virtualizzazione, ma sfrutta le tecnologie di virtualizzazioni preesistenti eseguendo un funzionamento assimilabile a quello di un raccoglitore.
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{images/Openstack.jpg}
+\caption{Diagramma rappresentativo funzionamento OpenStack\cite{OpenStack2}}
+\end{figure}\\
+\subsection{Nova}
+Nova fa parte del progetto open-source OpenStack, il suo scopo è la gestione delle Virtual Machine (VM), esso permette, in simbiosi con Cyborg, di definire gli acceleratori e le FPGA come VM, per maggiori approfondimenti si rimanda a \cite{Nova}.
+\subsection{Cyborg}
+È un sottosistema di OpenStack, il quale si occupa della gestione del ciclo di vita degli acceleratori, il tutto viene effettuato tramite un interfaccia \textit{REpresentational State Transfer} (REST), tale approccio permette l'aggiunta e la rimozione di nodi ed informazioni legate ai dispositivi.\cite{Cyborg}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{images/cyborg-architecture.png}
+\caption{Architettura del funzionamento di Cyborg\cite{Cyborg}}
+\end{figure}\\
+Tramite i driver Cyborg sarà in grado di interfacciarsi con la scheda FPGA ed effettuare le operazioni discusse approfonditamente nel capitolo \ref{chap:Cap1}
+\subsection{Blazar}
+È un servizio fornito da OpenStack al fine di effettuare la \textit{resource reservation}, ossia la prenotazione delle risorsi disponibili nel sistema cloud, le prenotazioni posso esser effettuate per un periodo di tempo specifico, immediatamente o nel futuro, per risorse intendiamo istanze di VM, risorse di storage e risorse puramente computazionali.\cite{Blazar}
+\subsection{Iotronic - Lightning-Rod}

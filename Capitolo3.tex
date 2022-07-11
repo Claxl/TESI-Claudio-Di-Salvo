@@ -1,6 +1,7 @@
 \chapter{Interfaccia Soft Core - Gate Array}
 \label{comunicazioneCap}
-Nell'ambiente delle FPGA SoC sono importantissime l'alta performace e la bassa latenza, l'architettura ZYNQ dimostra come i Processor Local Bus (PLB) rendono fattibile la comunicazione tra architettura ARM\footnote{Processing System} ed FPGA\footnote{Programmable Logic}\cite{8358511}.\\
+Nell'ambiente delle FPGA SoC sono importantissime l'alta performace e la bassa latenza, poichè la comunicazione tra le due componenti della board è fondamentale per il corretto funzionamento della scheda alle sue massime funzionalità.\\
+Tuttavia non è univoco il metodo di interfacciamento tra le due aree ed in questo capitolo tratteremo il più comune e diffuso tra quelli disponibili in tutte le FPGA SoC.
 \section{Interfacce di comunicazione}
 Le ZYNQ-7000 usano diversi metodi di comunicazione tra PS e PL, tutte basate su tecniche di interconnessione, le interfacce possono essere suddivise in due categorie\cite{Doc}:
 \begin{itemize}
