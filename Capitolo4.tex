@@ -1,7 +1,6 @@
 \chapter{Gate Array Full Reconfiguration}
 \label{chap:Cap3}
-Come già anticipato nel capitolo \ref{chap:Cap1}, lo scopo dell'architettura è quello di permettere la personalizzazione completa dell'FPGA al singolo utente, quindi ad esempio l'uso di un nuovo acceleratore, ma senza modificare il kernel linux.\\
-Al fine di far ciò è necessario riprogrammare la Programmable Logic tramite la classe, presente nel modulo del kernel, FPGA Manager, cosi da garantire l'uso della risorsa cloud all'utente in base alle sue necessità.
+La riprogrammabilità delle FPGA è la chiave per la loro adozione nei sistemi Cloud, rendendola cosi un sistema versatile, scalabile, efficiente ed ottimo per il cloud computing. Per la riprogrammazione delle FPGA SoC, le quali hanno un sistema operativo come discusso nel capitolo \ref{Linux}, è possibile eseguire delle procedure automatiche e non per la riprogrammazione completa della Programmable Logic.
 \section{FPGA Manager}
 Esso bisogna che sia abilitato nella struttura del kernel, poichè è un insieme di API agnostiche che la loro chiamata ci permette di programmare, o riprogrammare, l'FPGA tramite un file binario.
 \subsection{Creazione del file binario}

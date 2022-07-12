@@ -125,5 +125,16 @@ Nova fa parte del progetto open-source OpenStack, il suo scopo è la gestione de
 \end{figure}\\
 Tramite i driver Cyborg sarà in grado di interfacciarsi con la scheda FPGA ed effettuare le operazioni discusse approfonditamente nel capitolo \ref{chap:Cap1}
 \subsection{Blazar}
+\label{Blazar}
 È un servizio fornito da OpenStack al fine di effettuare la \textit{resource reservation}, ossia la prenotazione delle risorsi disponibili nel sistema cloud, le prenotazioni posso esser effettuate per un periodo di tempo specifico, immediatamente o nel futuro, per risorse intendiamo istanze di VM, risorse di storage e risorse puramente computazionali.\cite{Blazar}
 \subsection{Iotronic - Lightning-Rod}
+Essi sono due servizi che tramite le REST API permettono la gestione di device IoT denominati all'interno del framework come "board", la struttura dei servizi è conforme a quella dei servizi di OpenStack, quindi integrabile nel sistema.\\
+L'architettura del sistema si concentra sulla comunicazione tra gli user ed i nodi IoT. I servizi saranno due che si differenziano per che lato dell'infrastruttura operano, IoTronic lavora lato Cloud, mentre Lighting-Rod lato IoT, la combinazione dei due permette di realizzare varie azioni volte alla gestione dei dispositivi IoT come ad esempio:
+\begin{itemize}
+    \item La gestione delle Board, come l'invio dei comandi
+    \item Plugin
+    \item Servizi
+    \item Virtual Network
+    \item Web Service
+\end{itemize}
+Lightning-rod, come detto, rappresenta il punto di contatto tra il Sistema Operativo presente sulla Processing System dell'FPGA SoC permettendo all'utente di interfacciarsi attraverso una comunicazione assicurata tramite WAMP.
