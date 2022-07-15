@@ -1,7 +1,7 @@
 \chapter{Interfaccia Soft Core - Gate Array}
 \label{comunicazioneCap}
-Nell'ambiente delle FPGA SoC sono importantissime l'alta performace e la bassa latenza, poichè la comunicazione tra le due componenti della board è fondamentale per il corretto funzionamento della scheda alle sue massime funzionalità.\\
-Tuttavia non è univoco il metodo di interfacciamento tra le due aree ed in questo capitolo tratteremo il più comune e diffuso tra quelli disponibili in tutte le FPGA SoC.
+Nell'ambiente delle FPGA SoC è importante garantire l'alta performace e la bassa latenza. \textit{Processing System} e \textit{Programmable Logic} comunicano tra di loro al fine di permettere il corretto funzionamento della scheda alle sue massime funzionalità.\\
+Tuttavia il metodo di interfacciamento tra le due aree non è univoco. In questo capitolo verrà trattato il metodo più comune e diffuso tra quelli disponibili in tutte le FPGA SoC.
 \section{Interfacce di comunicazione}
 Le ZYNQ-7000 usano diversi metodi di comunicazione tra PS e PL, tutte basate su tecniche di interconnessione, le interfacce possono essere suddivise in due categorie\cite{Doc}:
 \begin{itemize}
@@ -140,10 +140,5 @@ Se il tutto ha avuto esito positivo possiamo effettuare la manipolazione dei dat
     }
 \end{lstlisting}
 Questo esempio può esser modificato ad hoc al fine di accedere ai core interconnessi con il protocollo AXI, questo da la base alla partial reconfiguration tramite due controller già presenti nei SoC. Questo codice può esser compilato sia on-board, sia tramite la cross compilazione, per la cross compilazione si rimanda a \ref{crossComp}\clearpage
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Vivado1.jpg}
-    \caption{Schema d'esempio di un sistema funzionale con questo esempio}
-    \label{fig:my_label}
-\end{figure}
-Tramite questo codice, disponibile per intero all'appendice \ref{GPIO} è possibile creare un sorgente in grado di effettuare un benchmark sul CDMA e quindi sulla velocità di trasferimento, si approfondisce il tutto in \ref{benchmark}
+
+

@@ -1,6 +1,6 @@
 \chapter{Interfacciamento IoT-Cloud con FPGA}
 \label{Linux}
-Il primo passaggio per l'integrazione delle FPGA SoC nel sistema IoT-Cloud è permettere l'interfacciamento con la rete tramite una distro Linux embedded, essa sarà montata sulla parte a microprocessore della board, al fine di permettere l'esecuzione dell'agente che effettuerà l'interfacciamento con il sistema Cloud e quindi garantire l'uso della risorsa nell'architettura precedentemente descritta.
+Il primo passaggio per l'integrazione delle FPGA SoC nel sistema IoT-Cloud è permettere l'interfacciamento con la rete tramite una distro Linux embedded. La distro compatibile con le FPGA SoC della Xilnix è \textit{Petalinux}, che verrà montata sulla parte a microprocessore della board al fine di permettere l'esecuzione di \textit{Lightning-rod} che effettuerà l'interfacciamento con il sistema Cloud. In tal modo sarà garantito l'uso della risorsa nell'architettura precedentemente descritta.
 \section{WorkFlow di Petalinux}
 Come già visto nell'appendice \ref{InstPeta} petalinux è un tool della xilinix che ci permette di creare un kernel linux per sistemi FPGA SoC.\\
 Petalinux tramite l'esportazione del hardware da vivado\footnote{\ref{ExportVivado}} ed un Board Support Package (BSP)\footnote{Esso rappresenta un codice di supporto di un implementazione per una determinata scheda} ci da la possibilità di creare il kernel per la scheda di riferimento.\\
