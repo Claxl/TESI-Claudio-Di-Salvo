@@ -23,30 +23,30 @@ Data la sempre più crescente quantità di CLB si può pensare come sia necessar
 Le FPGA essendo completamente riprogrammabili possono accogliere dei cores custom, detti Intellectual Property Cores, essi rappresentano dei dispositivi pre-realizzati al fine di compiere una ben precisa azione, essi possono passare da un banale moltiplicatore ad un softcore arm.
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.3\textwidth]{images/IPcores.jpg}
+\includegraphics[width=0.2\textwidth]{images/IPcores.jpg}
 \caption{Rappresentazione grafica di un IPCore in Vivado}
-\end{figure}\\
+\end{figure}
 \subsection{Le FPGA SoC}
-L'evoluzione dei processi tecnologici ha portato alla nascita di nuovi tipi di FPGA, le FPGA SoC, esse sono architetture che presentano una interconnessione tra Processore, solitamente della famiglia ARM, ed un FPGA in un unico dispositivo.\clearpage
+L'evoluzione dei processi tecnologici ha portato alla nascita di nuovi tipi di FPGA, le FPGA SoC, esse sono architetture che presentano una interconnessione tra Processore, solitamente della famiglia ARM, ed un FPGA in un unico dispositivo.
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.4\textwidth]{images/Capture1.png}
+\includegraphics[width=0.35\textwidth]{images/Capture1.png}
 \caption{Cambio di paradigma con l'introduzione delle FPGA SoC}
-\end{figure}
+\end{figure}\clearpage
 La loro fusione permette una maggior integrazione, anche lato connettività e quindi Cloud, un minor consumo ed una comunicazione molto più efficiente tra i due grazie ad una larghezza di banda superiore ed una latenza nettamente inferiore a prima.
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.6\textwidth]{images/Capture8.png}
 \caption{Schema rappresentativo FPGA SoC}
-\end{figure}\\
+\end{figure}
 \subsection{Architettura Zynq-7000}
-L'architettura Zynq-7000 è basata sul architettura Xilinx All Programmable System On Chip (AP SoC). I dispositivi di questa famiglia sono formati da un dual-single Core ARM Cortex A9 su cui si basa il Processing System (PS), includendo anche una on-chip memory, interfacce con memorie esterne e le periferiche di connettività con le interfacce, ed una Programmable Logic (PL) a 28nm.\\
-La PS e la PL sono alimentate separatamente e sarà compito del progettista decidere se disabilitare o meno la Programmable Logic, il processore eseguira il boot per primo e sarà sempre necessario anche per usare la parte logica, infatti si usa un approccio software centrico per la PL, ma come vedremo più avanti le due parti non sono scollegate tra di loro e questo approccio ci servirà al fine di effettuare operazioni lato PL.
+L'architettura Zynq-7000 è basata sul architettura Xilinx All Programmable System On Chip (AP SoC). I dispositivi di questa famiglia sono formati da un dual-single Core ARM Cortex A9 su cui si basa il Processing System (PS), includendo anche una on-chip memory, interfacce con memorie esterne e le periferiche di connettività con le interfacce, ed una Programmable Logic (PL) a 28nm.
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.6\textwidth]{images/zynq_arch.png}
+\includegraphics[width=0.4\textwidth]{images/zynq_arch.png}
 \caption{Schema rappresentativo ZYNQ-7000\cite{Zynq-7000}}
-\end{figure}\\
+\end{figure}\clearpage
+La PS e la PL sono alimentate separatamente e sarà compito del progettista decidere se disabilitare o meno la Programmable Logic, il processore eseguira il boot per primo e sarà sempre necessario anche per usare la parte logica, infatti si usa un approccio software centrico per la PL, ma come vedremo più avanti le due parti non sono scollegate tra di loro e questo approccio ci servirà al fine di effettuare operazioni lato PL.
 \section{Linguaggi di descrizione delle FPGA}
 Come accennato nel capitolo, \ref{FPGA}, le FPGA vengono implementate tramite l'uso dei CAD da un progettista, risulta però utile avere conoscenze dei linguaggi di descrizione dell'hardware quali VHDL\cite{VHDL} e Verilog\cite{Verilog} . Entrambe le opzioni sono supportate da Vivado e sono valide al fine di descrivere il comporamento di un sistema digitale. Le principali differenze tra i due linguaggi sono le similitudini al linguaggio C, infatti il Verilog ricorda molto la struttura del linguaggio di programmazione, permettendo anche ad un utente novizio la comprensione e l'appoccio a questo tipo di linguaggio.\\
 In generale entrambi i linguaggi sono intercambiabili per quanto rigurda la rappresentazione Register Transfer Level, ovvero la schematizzazione del sistema come un flusso di informazioni tra logica e registri. Inoltre entrambi condividono una struttura gerarchica, infatti è possibile tramite dei costrutti descrivere un sistema in maniera strutturale, tramite tre possibili approcci:

@@ -125,10 +125,11 @@ app_a,%
 
 % INIZIO DOCUMENTO
 \begin{document}
-\afterpage{\blankpage}
+
 
 
 \includepdf{frontespizio.pdf}
+\afterpage{\blankpage}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %INTERLINEA - DEFAULT 1 - NON ESAGERATE, NON SUPERATE MAI 1.3 ;)
@@ -151,14 +152,12 @@ app_a,%
 
 \listofcodes
 
-\afterpage{\blankpage}
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \mainmatter
-
 % INCLUSIONE FILE CAPITOLI - PERSONALIZZARE - TENERE COERENTE CON LISTA IN ALTO
 \include{Introduzione}
 \include{Background}
@@ -173,12 +172,23 @@ app_a,%
 \include{app_a}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% RINGRAZIAMENTI - PERSONALIZZARE
-\ringraziamenti
+
+
 % BIBLIOGRAFIA
 \phantomsection
 \addcontentsline{toc}{chapter}{\refname}
 \nocite{*}
 \printbibliography
-
+% RINGRAZIAMENTI - PERSONALIZZARE
+\ringraziamenti
+\textit{Ai professori Francesco Longo e Giovanni Merilino}\\
+Per il supporto datomi durante la scrittura della tesi e durante la mia carriera universitaria.\\\\\\
+\textit{A SIC - Stretto in Carena}\\
+Per avermi permesso di crescere sia come persona che come Ingegnere, rendendo il percorso unico.\\\\\\
+\textit{Ai miei amici e colleghi}\\
+Per l'aiuto, il supporto, le risate ed il tempo passato insieme in dipartimento e non.\\\\\\
+\textit{A Silvia}\\
+Per essermi stata affianco in questo percorso nonostante tutte le avversità del tragitto.\\\\\\
+\textit{Alla mia famiglia}\\
+Per il supporto in ogni mia decisione e per essere il paracadute in una vita in caduta libera.
 \end{document}

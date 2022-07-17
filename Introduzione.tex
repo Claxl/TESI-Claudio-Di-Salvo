@@ -1,3 +1,19 @@
 \chapter{Introduzione}
 \label{chap:intro}
-
+Negli ultimi tempi nel panorama informatico globale è diventato d'uso comune il termine \textit{Cloud} che rappresenta un'infrastruttura di rete remota alla quale tramite Internet si è in grado di interfacciarsi. All'interno del \textit{Cloud} è possibile trovare varie risorse come spazi d'archiviazione, indirizzi di rete e macchine virtuali.\\
+Con l'avvento del \textit{Internet of Things} nei sistemi \textit{Cloud} non è raro trovare anche dispositivi con la quale è possibile interfacciarsi, interconnettersi, acquisire ed elaborare dati. Fuori da questo panorama vengono comunemente esclusi dispositivi basati su tecnologia \textit{Field Programmable Gate Array} o \textit{FPGA}, per via della loro integrazione con il sistema \textit{Cloud}.\\
+Tale caratteristica è data dalla natura del dispositivo che a differenza dei sistemi comunemente usati, necessiterà un percorso diametralmente opposto per la programmazione, composto da un posizionamento dei blocchi logici che compongono le \textit{FPGA} ed una traduzione del comportamento logico del sistema.\\
+Inoltre, la strumentazione per effettuare la progettazione finale delle \textit{FPGA} è proprietaria ed a sorgente chiuso.\\
+L'elaborato si pone come obiettivo quello di creare strumenti, gratuiti ed a codice sorgente aperto, che permettano una più semplice integrazione nei sistemi \textit{Cloud} già esistenti.
+In particolare, si è progettato l'interfacciamento del sistema con l'ambiente cloud e la sua completa e parziale riprogrammazione.
+L'implementazione di tale sistema è stata testata tramite la \textit{Zedboard}.
+La realizzazione dell'ambiente \textit{Cloud} e le politiche di gestione della risorsa rappresentano il lavoro necessario alla finalizzazione del progetto.\\
+Nel primo capitolo si discuteranno gli argomenti di base su cui si incentra l'elaborato.\\
+Fornendo una breve introduzione sui dispositivi \textit{FPGA} e sulle loro funzionalità. In seguito verranno trattati i linguaggi di descrizione dell'hardware, di conseguenza gli strumenti tramite i quali è possibile descrivere il comportamento dell'\textit{FPGA}.\\
+Inoltre verrà fornita un'introduzione sulle tecnologie utilizzate nello sviluppo e che saranno necessarie al continuo del lavoro.\\
+Nel Secondo capitolo si discuterà la soluzione ideata al fine del raggiungimento degli obiettivi di progetto.\\
+Nel Terzo capitolo verrà implementato il sistema operativo per le schede \textit{FPGA}, approfondendo le procedure di programmazione del kernel e descrivendo il workflow necessario al fine di avere un sistema connesso al Cloud.\\
+Nel Quarto Capitolo si approfondirà l'interfacciamento interno del \textit{FPGA}, andando a descrivere i vari bus e verrà implementato un driver per l'interfacciamento con il GPIO della scheda tramite il sistema operativo. Questo driver ci permetterà l'acquisizione e l'elaborazione in loco dei dati.\\
+Nel Quinto capitolo si discuterà sull'interfaccia necessaria alla riprogrammazione della scheda, sviluppando uno script che permette la \textit{Full Reconfiguration}. Inoltre, verranno discusse le metodologie di riprogrammazione parziale e le sue problematiche.\\
+Infine verrà fornita una guida completa ed integrale alla configurazione e all'uso di tutte le componenti trattate.\\
+Per completezza i codici sorgenti inerenti alla trattazione verranno inseriti nella loro totalità nell'appendice, per facilitarne la fruizione.
