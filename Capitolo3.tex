@@ -21,24 +21,18 @@ Prima di parlare del protocollo AXI, è necessario esporre il protocollo AMBA, e
                      compatible = "xlnx,zynq-can-1.0";
                      clock-names = "can_clk", "pclk";
                      reg =<0x0 0xff060000 0x0 0x1000>;
-                     interrupts = <0 23 4>;
-                     interrupt-parent = <&gic>;
-                     tx-fifo-depth = <0x40>;
-                     rx-fifo-depth = <0x40>;
-                     power-domains = <&pd_can0>;
           };
   };
-\end{lstlisting}\clearpage
+\end{lstlisting}
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\textwidth]{images/AMBA.png}
+    \includegraphics[width=0.7\textwidth]{images/AMBA.png}
     \caption{Diagramma raffigurante SoC, tutti i collegamenti saranno decisi dal protocollo AMBA, si può notare come figura il protocollo AXI\cite{amba}}
     \label{fig:my_label}
 \end{figure}
 \subsection{Perchè e dov'è usato AMBA}
 Il protocollo AMBA è usato per semplificare lo sviluppo di schede contenenti più processori e un grande numero di periferiche e controllori.\\
 È diventato uno standard data la sua flessibilità, compatibilità, larghezza di banda e latenza.
-\clearpage
 \section{Advanced eXtensible Interface}
 È un protocollo di interfaccia sviluppato sulle architetture ARM e parte del protocollo AMBA.
 \begin{figure}
@@ -59,7 +53,7 @@ Quelli direzione Master to Slave, mentre Slave to Master:
 \begin{itemize}
     \item Write Response
     \item Read Data
-\end{itemize}\clearpage
+\end{itemize}
 \begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{images/AXI2.jpg}
@@ -68,7 +62,7 @@ Quelli direzione Master to Slave, mentre Slave to Master:
 \end{figure}
 I dati possono viaggiare simultaneamente in entrambe le direzioni, esso è possibile per via delle due connessioni separate, in indirizzi e dati, sia per lettura che per scrittura. Ogni scambio di dati è detto transazione essa include l'indirizzo, le informazioni di controllo, i dati inviati e qualsiasi informazione di risposta.
 \subsection{AXI nei sistemi ZYNQ}
-Nell'architettura ZYNQ-7000, ma come tutte le architetture ZYNQ, il protocollo AXI permette l'interfacciamento tra Processing System (PS) e Programmable Logic (PL).\clearpage
+Nell'architettura ZYNQ-7000, ma come tutte le architetture ZYNQ, il protocollo AXI permette l'interfacciamento tra Processing System (PS) e Programmable Logic (PL).
 \begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{images/AXI3.jpg}
@@ -80,7 +74,7 @@ Nell'architettura ZYNQ-7000, ma come tutte le architetture ZYNQ, il protocollo A
     \includegraphics[width=0.7\textwidth]{images/axi.jpg}
     \caption{Zoom della connessione tra PS e PL}
     \label{fig:my_label}
-\end{figure}
+\end{figure}\\
 In quest'architettura abbiamo delle interfacce di comunicazione sul bus AXI.
 Al fine di facilitare lo sviluppo della scheda la xilnix ha prodotto un componente, completamente riprogrammabile, detto AXI Interconnect, esso facilità e gestisce tutte le connessioni tra master e slave.\clearpage
 \begin{figure}
