@@ -2,12 +2,12 @@
 \label{Linux}
 Il primo passaggio per l'integrazione delle FPGA SoC nel sistema IoT-Cloud è permettere l'interfacciamento con la rete tramite una distro Linux embedded. La distro compatibile con le FPGA SoC della Xilnix è \textit{Petalinux}, che verrà montata sulla parte a microprocessore della board al fine di permettere l'esecuzione di \textit{Lightning-rod} che effettuerà l'interfacciamento con il sistema Cloud. In tal modo sarà garantito l'uso della risorsa nell'architettura precedentemente descritta.
 \section{WorkFlow di Petalinux}
-Come già visto nell'appendice \ref{InstPeta} petalinux è un tool della xilinix che ci permette di creare un kernel linux per sistemi FPGA SoC.\\
-Petalinux tramite l'esportazione del hardware da vivado\footnote{\ref{ExportVivado}} ed un Board Support Package (BSP)\footnote{Esso rappresenta un codice di supporto di un implementazione per una determinata scheda} ci da la possibilità di creare il kernel per la scheda di riferimento.\\
-Petalinux oltre a definire il kernel ed il comportamento degli stati di boot, ci permette di costruire il file system, in maniera puramente custom, tramite l'uso di Yocto, esso è un progetto open-source che permette alla community indipendentemente dall'architettura hardware.\\
+Come già visto nell'appendice \ref{InstPeta} \textit{Petalinux} è un tool della \textit{Xilinx} che ci permette di creare un kernel linux per sistemi FPGA SoC.\\
+\textit{Petalinux} tramite l'esportazione del hardware da vivado\footnote{\ref{ExportVivado}} ed un Board Support Package (BSP)\footnote{Esso rappresenta un codice di supporto di un implementazione per una determinata scheda} ci da la possibilità di creare il kernel per la scheda di riferimento.\\
+\textit{Petalinux} oltre a definire il kernel ed il comportamento degli stati di boot, ci permette di costruire il file system, in maniera puramente custom, tramite l'uso di Yocto, esso è un progetto open-source che permette alla community indipendentemente dall'architettura hardware.\\
 Una volta effettuati i passaggi descritti nel \ref{SetupPeta}, è possibile effettuare tramite console linux l'effettiva creazione del kernel.
 \subsection{Creazione di un progetto}
-Al fine di creare un progetto è possibile percorrere due strade, usare un template\footnote{Nel caso di zedboard bisogna usare zynq} o l'uso di un BSP\footnote{\href{https://www.xilinx.com/member/forms/download/xef.html?filename=avnet-digilent-zedboard-v2021.2-final.bsp}{Xilinix}}.
+Al fine di creare un progetto è possibile percorrere due strade, usare un template\footnote{Nel caso di zedboard bisogna usare zynq} o l'uso di un BSP\footnote{\href{https://www.xilinx.com/member/forms/download/xef.html?filename=avnet-digilent-zedboard-v2021.2-final.bsp}{Xilinx}}.
 \begin{lstlisting}[language=sh, label=lst:sh, caption={Comando creazione progetto con BSP}]
 petalinux-create -t project -s <PATH-TO-BSP>
 \end{lstlisting}
@@ -23,7 +23,7 @@ INFO: New project successfully created in /home/user/
 \end{lstlisting}
 Entrambe le scelte sono intercambiabili, poichè ci daranno solamente lo scheletro sulla quale poi modellare tutto il sistema.
 \subsection{Configurazione del sistema}
-Dopo la creazione dello scheletro è però necessario configurare il progetto in base alle esigenze progettuali, quindi al fine di far ciò sarà necessario muoversi nella cartella di progetto e definire l'hardware del progetto tramite l'hardware definition file\footnote{Xilinix Support Archive, XSA},  esso si può accumunare ad un archivio al cui interno ci sono tutte le informazioni necessarie per costruire la piattaforma per la struttura che è stata progetta antecedentemente\footnote{Per la progettazione si rimanda a \ref{CreazioneVivado}, mentre per l'export del file XSA a \ref{ExportVivado}}. Al suo interno troveremo le librerie PS7\footnote{Cambiano per ogni architettura}, Processing System 7000, come la nostra architettura, essi sono strettamente legali al processo di boot lato PS\footnote{Processing System}, nel dettaglio i file PS7\_init contengono tutte le configurazioni per il clock, la memoria ed il GPIO, inoltre essi vengono usati per creare il First Stage BootLoader (FSBL), il qui compito è quello di puntare al Second Stage BootLoader nella partizione di boot. 
+Dopo la creazione dello scheletro è però necessario configurare il progetto in base alle esigenze progettuali, quindi al fine di far ciò sarà necessario muoversi nella cartella di progetto e definire l'hardware del progetto tramite l'hardware definition file\footnote{Xilinx Support Archive, XSA},  esso si può accumunare ad un archivio al cui interno ci sono tutte le informazioni necessarie per costruire la piattaforma per la struttura che è stata progetta antecedentemente\footnote{Per la progettazione si rimanda a \ref{CreazioneVivado}, mentre per l'export del file XSA a \ref{ExportVivado}}. Al suo interno troveremo le librerie PS7\footnote{Cambiano per ogni architettura}, Processing System 7000, come la nostra architettura, essi sono strettamente legali al processo di boot lato PS\footnote{Processing System}, nel dettaglio i file PS7\_init contengono tutte le configurazioni per il clock, la memoria ed il GPIO, inoltre essi vengono usati per creare il First Stage BootLoader (FSBL), il qui compito è quello di puntare al Second Stage BootLoader nella partizione di boot. 
 \begin{lstlisting}[language=sh, label=lst:sh, caption={Comando necessario alla definizione dell'hardware}]
 petalinux-config --get-hw-description <PATH-TO-XSA Directory>/<PATH-TO-XSA>
 \end{lstlisting}
@@ -58,8 +58,8 @@ petalinux-config -c kernel
 \end{lstlisting}
 Dalla schermata, che sarà analoga a quelle precedenti, è necessario abilitare i seguenti moduli\footnote{Per "[*]" si intende selezionato e si fa posizionandosi sopra il modulo desiderato e premendo la barra spaziatrice}:
 \begin{itemize}
-    \item \textit{Device Drivers ---> FPGA Configuration Framework -> [*]FPGA Region}, l'FPGA Region verrà discussa nel dettaglio nel capitolo \ref{cap5}
-    \item \textit{Device Drivers ---> FPGA Configuration Framework -> [*]FPGA Bridge Framework}, il Bridge verrà discusso nel dettaglio nel capitolo \ref{cap5}
+    \item \textit{Device Drivers ---> FPGA Configuration Framework -> [*]FPGA Region}, l'FPGA Region verrà discussa nel dettaglio nella sezione \ref{cap5}
+    \item \textit{Device Drivers ---> FPGA Configuration Framework -> [*]FPGA Bridge Framework}, il Bridge è un gate bus che permette la connessione tra Host ed FPGA. Esso dovrà esser disabilitato durante la \textit{Full Reconfiguration}, al fine di evitare possibili segnali malevoli. Mentre per la \textit{Partial Reconfiguration} sarà ininfluente poichè le regioni non interessate non verranno modificate.
     \item \textit{Device Drivers --> Device Tree and Open Firmware support -> [*] Device Tree Overlays}, il suo scopo è modificare il device tree del kernel mentre è in esecuzione, una sua modifica si ripercuote sul lato FPGA, causandone una modifica.
     \item \textit{Device Drivers --> Device Tree and Open Firmware support -> [*] Device Tree Overlays ConfigFS Interface}
     \item \textit{Memory Management options ---> [*] Contiguous Memory Allocator}, il Contiguous Memoy Allocator verrà discusso nel dettaglio nel capitolo \ref{comunicazioneCap}
@@ -87,7 +87,7 @@ petalinux-create -t modules --name [nome desiderato] --enable
 Analogalmente all'applicazione il modulo si troverà nella cartella \textit{/project-spec/meta-user/recipes-modules/[nome desiderato]}, esso sarà compilato una volta compilato il kernel.
 
 \section{Compilazione kernel}
-Una volta ultimata la progettazione e la configurazione del kernel e del file system è necessaria la compilazione al fine di generare il codice binario, in ambiente petalinux sarà necessario usare il comando
+Una volta ultimata la progettazione e la configurazione del kernel e del file system è necessaria la compilazione al fine di generare il codice binario, in ambiente \textit{Petalinux} sarà necessario usare il comando
 \begin{lstlisting}[language=sh, label=lst:sh, caption={Comando necessario alla compilazione del kernel}]
 petalinux-build
 \end{lstlisting}

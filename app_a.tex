@@ -2,7 +2,7 @@
 
 \section{Installazione Xilnix Tool}
 \label{app:a}
-Al fine di effettuare tutta la creazione e riconfigurazione della zedboard tramite petalinux, dobbiamo scaricare gli opportuni tools forniti dalla Xilnix.\\
+Al fine di effettuare tutta la creazione e riconfigurazione della Zedboard tramite Petalinux, dobbiamo scaricare gli opportuni tools forniti dalla Xilnix.\\
 I tools necessari sono:
 \begin{itemize}
 \item Vivado
@@ -54,15 +54,15 @@ Adesso dobbiamo avviare la sintesi, cosi da far tradurre il file HDL in una netl
 \subsubsection{Implementazione}
 Questo processo mappa la sintesi che abbiamo svolto nel chip che abbiamo selezionato, nel nostro caso la zedboard. Anche qui troviamo la possibilità di far partire il tutto tramite il pulsante \textit{Run Implementation} nella tool bar di sinistra.
 \subsection{Generazione del bistream}
-Una volta terminati tutti questi passaggi andati a buon fine possiamo creare il file ".bit" che ci servirà più avanti per definire il kernel di petalinux. Al fine di far partire la generazione si usa il comando \textit{Generate Bitstream} presente nella tool bar di sinistra.
+Una volta terminati tutti questi passaggi andati a buon fine possiamo creare il file ".bit" che ci servirà più avanti per definire il kernel di Petalinux. Al fine di far partire la generazione si usa il comando \textit{Generate Bitstream} presente nella tool bar di sinistra.
 \subsection{Export del file di developing}\label{ExportVivado}
-Al fine di creare sul nostro hardware l'immagine di petalinux, al fine di far ciò:
+Al fine di creare sul nostro hardware l'immagine di Petalinux, al fine di far ciò:
 \begin{itemize}
 \item Una volta seguiti tutti gli step precedenti clicco in alto a sinistra il pulsante file
 \item Export, il terzultimo pulsante
 \item Export hardware
 \item Una volta aperta la finestra andiamo avanti e selezioniamo \textbf{Include bitstream}
-\item Diamo un nome ed una directory ed abbiamo esportato tutto il necessario per petalinux
+\item Diamo un nome ed una directory ed abbiamo esportato tutto il necessario per Petalinux
 \end{itemize}
 
 
@@ -85,7 +85,7 @@ Al fine di effettuare il flash sulla scheda dovremmo ritornare nel IDE, collegar
 \end{itemize}
 \subsection{Collegamento Tramite UART}
 Al fine di vedere il risultato a schermo della programmazione che si sta effettuando, bisogna connettersi tramite UART al connettore micro USB J14 e tramite un monitor seriale \href{https://ttssh2.osdn.jp/index.html.en}{Tera Term} su windows e tio su linux, connettersi alla scheda che solitamente sotto ambiente windows sarà COM* e sotto linux /dev/ttyACM* con un baudrate\footnote{velocità di trasmissione} di 115200, da qui potremmo interfacciarci con la scheda per usufruire del codice bare-metal che è stato caricato. \\
-Questo metodo è equivalente se è presente petalinux sulla scheda.
+Questo metodo è equivalente se è presente Petalinux sulla scheda.
 
 
 
