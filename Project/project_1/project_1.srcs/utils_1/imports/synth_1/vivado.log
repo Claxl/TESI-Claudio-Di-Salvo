@@ -1,0 +1,48 @@
+#-----------------------------------------------------------
+# Vivado v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:48:09 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Fri Mar 18 22:31:09 2022
+# Process ID: 17536
+# Current directory: C:/Users/Claudio/project_1/project_1.srcs/utils_1/imports/synth_1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent19256 C:\Users\Claudio\project_1\project_1.srcs\utils_1\imports\synth_1\design_1_wrapper.dcp
+# Log file: C:/Users/Claudio/project_1/project_1.srcs/utils_1/imports/synth_1/vivado.log
+# Journal file: C:/Users/Claudio/project_1/project_1.srcs/utils_1/imports/synth_1\vivado.jou
+# Running On: DESKTOP-GUITHJD, OS: Windows, CPU Frequency: 4200 MHz, CPU Physical cores: 4, Host memory: 17137 MB
+#-----------------------------------------------------------
+start_gui
+open_checkpoint C:/Users/Claudio/project_1/project_1.srcs/utils_1/imports/synth_1/design_1_wrapper.dcp
+Command: open_checkpoint C:/Users/Claudio/project_1/project_1.srcs/utils_1/imports/synth_1/design_1_wrapper.dcp
+
+Starting open_checkpoint Task
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.064 . Memory (MB): peak = 1429.629 ; gain = 0.000
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:2.2 available at D:/Xilnix/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/2.2/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190_es:part0:1.3 available at D:/Xilnix/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/es/1.3/board.xml as part xcvc1902-vsva2197-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:2.2 available at D:/Xilnix/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/2.2/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180_es:part0:1.3 available at D:/Xilnix/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/es/1.3/board.xml as part xcvm1802-vsva2197-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120_es:part0:1.2 available at D:/Xilnix/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/es/1.2/board.xml as part xcvp1202-vsva2785-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at D:/Xilnix/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld_es:part0:1.0 available at D:/Xilnix/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/es/1.0/board.xml as part xczu58dr-fsvg1517-2-i-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at D:/Xilnix/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld_es:part0:1.0 available at D:/Xilnix/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/es/1.0/board.xml as part xczu59dr-ffvf1760-2-i-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:1.0 available at D:/Xilnix/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/1.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilnix/Vivado/2021.2/data/ip'.
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1743.227 ; gain = 0.000
+INFO: [Project 1-479] Netlist was created with Vivado 2021.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+CRITICAL WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'Prova_auto_pc_0' instantiated as 'Prova_i/ps7_0_axi_periph/s00_couplers/auto_pc' [c:/Users/Claudio/project_1/project_1.gen/sources_1/bd/Prova/synth/Prova.v:866]
+CRITICAL WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'Prova_processing_system7_0_0' instantiated as 'Prova_i/processing_system7_0' [c:/Users/Claudio/project_1/project_1.gen/sources_1/bd/Prova/synth/Prova.v:147]
+CRITICAL WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'Prova_prova_ip_0_1' instantiated as 'Prova_i/prova_ip_0' [c:/Users/Claudio/project_1/project_1.gen/sources_1/bd/Prova/synth/Prova.v:211]
+CRITICAL WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'Prova_rst_ps7_0_100M_0' instantiated as 'Prova_i/rst_ps7_0_100M' [c:/Users/Claudio/project_1/project_1.gen/sources_1/bd/Prova/synth/Prova.v:299]
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1832.934 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Project 1-604] Checkpoint was created with Vivado v2021.2 (64-bit) build 3367213
+open_checkpoint: Time (s): cpu = 00:00:42 ; elapsed = 00:00:24 . Memory (MB): peak = 1977.789 ; gain = 548.160
+exit
+INFO: [Common 17-206] Exiting Vivado at Fri Mar 18 22:32:10 2022...
