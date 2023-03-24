@@ -1,0 +1,2 @@
+# Thesis-Claudio-Di-Salvo
+During my thesis work, I focused on implementing mechanisms for Full and Partial Reconfiguration of FPGAs in IoT-Cloud architectures. My work resulted in the development of an automatic reprogramming system for the Zedboard in a Linux environment, optimizing the use of available hardware resources. Additionally, I created a driver to interface the two areas of the FPGA SoC, improving the efficiency and flexibility of the entire system.
